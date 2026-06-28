@@ -54,8 +54,25 @@ let visiblePhotos = [...photos];
 let activeIndex = 0;
 
 function ratioFor(index) {
-  const pattern = ["3 / 2", "4 / 3", "16 / 10", "5 / 4", "3 / 2"];
+  const pattern = ["3 / 2", "4 / 3", "16 / 10", "5 / 4", "3 / 2", "6 / 5"];
   return pattern[index % pattern.length];
+}
+
+function layoutClass(index) {
+  if ([0, 9, 21, 32].includes(index)) return "is-featured";
+  if ([5, 16, 27, 36].includes(index)) return "is-wide";
+  if ([3, 13, 24, 34].includes(index)) return "is-tall";
+  return "";
+}
+
+function categoryLabel(category) {
+  const labels = {
+    city: "城市",
+    steppe: "草原",
+    river: "河谷",
+    detail: "细节",
+  };
+  return labels[category] || "旅途";
 }
 
 function render(filter = "all") {
@@ -64,9 +81,14 @@ function render(filter = "all") {
   grid.innerHTML = visiblePhotos
     .map(([file, category, caption], index) => {
       return `
-        <button class="photo-card" type="button" data-index="${index}" data-category="${category}" style="--ratio: ${ratioFor(index)}">
-          <img src="./assets/thumbs/${file}" alt="${caption}" loading="lazy">
-          <span class="photo-caption">${caption}</span>
+        <button class="photo-card ${layoutClass(index)}" type="button" data-index="${index}" data-category="${category}" style="--ratio: ${ratioFor(index)}">
+          <span class="photo-frame">
+            <img src="./assets/thumbs/${file}" alt="${caption}" loading="lazy">
+          </span>
+          <span class="photo-meta">
+            <span class="photo-tag">${categoryLabel(category)}</span>
+            <span class="photo-caption">${caption}</span>
+          </span>
         </button>
       `;
     })
