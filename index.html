@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mongolia Travel Journal</title>
+    <meta
+      name="description"
+      content="一组蒙古旅行照片与游记，记录城市、草原、河谷、风与云。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="页面导航">
+      <a class="brand" href="#top">Mongolia Journal</a>
+      <nav>
+        <a href="#story">游记</a>
+        <a href="#gallery">照片</a>
+        <a href="#notes">路线</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="蒙古旅行首屏">
+        <img src="./assets/large/IMG_0378.jpg" alt="蒙古辽阔草原与云层" />
+        <div class="hero-copy">
+          <p class="kicker">Summer on the steppe</p>
+          <h1>蒙古旅行手记</h1>
+          <p>
+            从乌兰巴托的蓝天出发，穿过河谷、丘陵和一望无际的草原，把风声、云影和路上的停顿留在这里。
+          </p>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="旅行摘要">
+        <div>
+          <span>40</span>
+          <p>张精选照片</p>
+        </div>
+        <div>
+          <span>3</span>
+          <p>个视觉章节</p>
+        </div>
+        <div>
+          <span>∞</span>
+          <p>草原、河流与天空</p>
+        </div>
+      </section>
+
+      <section id="story" class="story-section">
+        <div class="section-heading">
+          <p class="kicker">Journal</p>
+          <h2>路上的几段记忆</h2>
+        </div>
+        <div class="story-grid">
+          <article class="story-card feature-card">
+            <img src="./assets/large/IMG_0013.jpg" alt="乌兰巴托建筑与蒙古国旗" />
+            <div>
+              <p class="eyebrow">Ulaanbaatar</p>
+              <h3>城市的第一眼</h3>
+              <p>
+                白色立面、玻璃反光和很高的蓝天，给这趟旅程开了一个清晰的头。城市是短暂停留，也是通往草原前的坐标。
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <img src="./assets/large/IMG_0219.jpg" alt="河流穿过绿色草地" />
+            <div>
+              <p class="eyebrow">River Valley</p>
+              <h3>河谷像地图一样展开</h3>
+              <p>
+                水道绕过草甸，远处的山坡颜色柔和。车停下来时，风会把空间拉得很长。
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <img src="./assets/large/IMG_0355.jpg" alt="草地上的小型野生动物" />
+            <div>
+              <p class="eyebrow">Wildlife</p>
+              <h3>草里的小动静</h3>
+              <p>
+                安静看久一点，草地会开始出现细节：一点移动、一声叫唤，还有偶然闯进镜头的小生命。
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery-section">
+        <div class="section-heading compact">
+          <p class="kicker">Gallery</p>
+          <h2>照片墙</h2>
+        </div>
+        <div class="filter-bar" aria-label="照片分类">
+          <button class="filter active" type="button" data-filter="all">全部</button>
+          <button class="filter" type="button" data-filter="city">城市</button>
+          <button class="filter" type="button" data-filter="steppe">草原</button>
+          <button class="filter" type="button" data-filter="river">河谷</button>
+          <button class="filter" type="button" data-filter="detail">细节</button>
+        </div>
+        <div class="masonry" id="photoGrid" aria-live="polite"></div>
+      </section>
+
+      <section id="notes" class="notes-section">
+        <div class="notes-copy">
+          <p class="kicker">Route Notes</p>
+          <h2>适合继续补充的游记结构</h2>
+          <p>
+            可以把每天的路线、住宿、交通、天气和个人感受继续写进这里。页面已经按照片叙事组织，后续只需要替换文字或追加章节。
+          </p>
+        </div>
+        <div class="timeline">
+          <div>
+            <span>01</span>
+            <p>抵达乌兰巴托，记录城市建筑与广场。</p>
+          </div>
+          <div>
+            <span>02</span>
+            <p>向草原行进，拍摄开阔地貌、云层和道路。</p>
+          </div>
+          <div>
+            <span>03</span>
+            <p>停留河谷与牧场，整理最有记忆点的照片。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="icon-button close" type="button" aria-label="关闭大图">×</button>
+      <button class="icon-button prev" type="button" aria-label="上一张">‹</button>
+      <figure>
+        <img id="lightboxImage" alt="" />
+        <figcaption id="lightboxCaption"></figcaption>
+      </figure>
+      <button class="icon-button next" type="button" aria-label="下一张">›</button>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
