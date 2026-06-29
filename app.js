@@ -49,6 +49,7 @@ const lightboxCaption = document.querySelector("#lightboxCaption");
 const closeButton = document.querySelector(".close");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
+const routeLinks = [...document.querySelectorAll(".route-link")];
 
 let visiblePhotos = [...photos];
 let activeIndex = 0;
@@ -97,6 +98,18 @@ function render(filter = "all") {
     .join("");
 }
 
+function setActiveFilter(filter) {
+  buttons.forEach((item) => {
+    item.classList.toggle("active", item.dataset.filter === filter);
+  });
+  render(filter);
+}
+
+function showGalleryFilter(filter) {
+  setActiveFilter(filter);
+  document.querySelector("#gallery").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function openLightbox(index) {
   const [file, , caption] = visiblePhotos[index];
   activeIndex = index;
@@ -122,9 +135,16 @@ function showAdjacent(direction) {
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    buttons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    render(button.dataset.filter);
+    setActiveFilter(button.dataset.filter);
+  });
+});
+
+routeLinks.forEach((card) => {
+  card.addEventListener("click", () => showGalleryFilter(card.dataset.filter));
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    showGalleryFilter(card.dataset.filter);
   });
 });
 
